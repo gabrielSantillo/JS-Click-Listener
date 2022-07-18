@@ -23,6 +23,19 @@ footerTag.addEventListener(`keyup`, changeColorKeyUp);
 /*This function changes the backgroud color of the body. By using the function setTimeOut, I call the function that will change the background color and after 15s will change the color of the body. */
 function changeBgColor() {
     let target = document.body;
-    target.style.background = `red`;
+    let r = Math.floor(Math.random()*255);
+    let g = Math.floor(Math.random()*255);
+    let b = Math.floor(Math.random()*255);
+    target.style.background = `rgb(`+r+`, `+g+`, `+b+`)`;
 }
 setTimeout(changeBgColor, 15000);
+
+
+/*This function changes the posistion of the element in the axis X and Y ramdonly. By calling the function setInterval it will changes it position every 3s*/
+function changePosition() {
+    let x = Math.floor(Math.random()*100);
+    let y = Math.floor(Math.random()*100);
+    let button = document.querySelector(`button`);
+    button.style.transform = `translateX(${x}%) translateY(${y}%)`;
+  }
+  setInterval(changePosition, 3000);
