@@ -48,3 +48,32 @@ function changePosition() {
   }
   /*By calling the function setInterval it will changes its position every 3s */
   setInterval(changePosition, 3000);
+
+
+  /**************************************************************************************** */
+  /* trying to solve the last bonus question */
+  let anagrams = [];
+
+  /*This function return the anagram of a word */
+  function genAnagrams(word, anagram = ``) {
+    /* checks if the word is empty. When empty, add the anagram to the anagrams array */
+    if (!word) {
+        anagrams.push(anagram);
+        return;
+    }
+    for (let counter = 0; counter < word.length; counter++) {
+        /*Concatenate the recurring letter to the anagram variable*/
+        anagram += word[counter];
+        /* Recover over the function to pass the anagram without the letter that it's being used*/
+        genAnagrams(word.slice(0, counter) + word.slice(counter + 1), anagram);
+        anagram = anagram.slice(0, anagram.length - 1);
+    }
+  }
+  genAnagrams(`secret`);
+
+  for(let counter = 0; anagrams.length; counter++) {
+    if (`secrte` === anagrams[counter]) {
+        console.log(`You discovered the secret.`)
+    }
+  }
+ 
